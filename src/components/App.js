@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { GlobalStyles } from "./Themes";
 import Count from "./Count";
-import facebook from "../assets/icon-facebook.svg";
-import pinterest from "../assets/icon-pinterest.svg";
-import instagram from "../assets/icon-instagram.svg";
+import Footer from "./Footer";
 
 const CountdownContainer = styled.div`
     display: flex;
@@ -14,11 +12,6 @@ const CountdownContainer = styled.div`
 
 const Heading = styled.h1`
     margin-bottom: 57px;
-`;
-
-const Footer = styled.footer`
-    position: absolute;
-    bottom: 0;
 `;
 
 export default function App() {
@@ -48,29 +41,7 @@ export default function App() {
                     <Count value="41" label="Seconds" />
                 </CountdownContainer>
             </main>
-            <Footer>
-                <a href="https://www.facebook.com/">
-                    <img src={facebook} alt="Facebook" />
-                </a>
-                <a href="https://www.pinterest.com/">
-                    <img src={pinterest} alt="Pinterest" />
-                </a>
-                <a href="https://www.instagram.com/">
-                    <img src={instagram} alt="Instagram" />
-                </a>
-                <p>
-                    Challenge by{" "}
-                    <a
-                        href="https://www.frontendmentor.io?ref=challenge"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        Frontend Mentor
-                    </a>
-                    . Coded by{" "}
-                    <a href="https://github.com/cagloria">C.A. Gloria</a>.
-                </p>
-            </Footer>
+            <Footer />
         </>
     );
 }

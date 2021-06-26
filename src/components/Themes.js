@@ -22,7 +22,7 @@ export const GlobalStyles = createGlobalStyle`
 
     body {
         margin: 0;
-        padding: 129px 20px 0;
+        padding: 130px 20px 0;
         background-color: ${neutral.black};
         background-image: 
             url(${bgHills}),
