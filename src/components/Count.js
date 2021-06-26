@@ -1,5 +1,14 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { primary, neutral } from "./Themes";
+
+const CountStyles = createGlobalStyle`
+    .box {
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        border-radius: 5px;
+    }
+`;
 
 const Value = styled.div`
     font-size: 2.1em;
@@ -16,24 +25,22 @@ const Value = styled.div`
 `;
 
 const TopBox = styled.div`
-    background-color: #2a2d46;
-    /* TODO: There is a shadow over this portion that overshadows the text */
-    position: absolute;
+    background-color: ${neutral.gray};
     top: 0;
-    width: 100%;
-    height: 50%;
     z-index: -1;
     border-radius: 5px;
 `;
 
 const BottomBox = styled.div`
     background-color: ${neutral.gray};
-    position: absolute;
     bottom: 0;
-    width: 100%;
-    height: 50%;
     z-index: -1;
-    border-radius: 5px;
+`;
+
+const Shadow = styled.div`
+    background-color: #2a2d4657;
+    top: 0;
+    z-index: 9;
 `;
 
 const Label = styled.p`
@@ -52,10 +59,12 @@ export default function Count({ value, label }) {
 
     return (
         <div>
+            <CountStyles />
             <Value>
                 {value}
-                <TopBox />
-                <BottomBox />
+                <TopBox className="box" />
+                <BottomBox className="box" />
+                <Shadow className="box" />
             </Value>
             <Label>{label}</Label>
         </div>
