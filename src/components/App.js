@@ -1,8 +1,25 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import { GlobalStyles } from "./Themes";
 import Count from "./Count";
 import facebook from "../assets/icon-facebook.svg";
 import pinterest from "../assets/icon-pinterest.svg";
 import instagram from "../assets/icon-instagram.svg";
+
+const CountdownContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    column-gap: 17px;
+`;
+
+const Heading = styled.h1`
+    margin-bottom: 57px;
+`;
+
+const Footer = styled.footer`
+    position: absolute;
+    bottom: 0;
+`;
 
 export default function App() {
     const [launchDate, setLaunchDate] = useState(
@@ -20,17 +37,18 @@ export default function App() {
 
     return (
         <>
+            <GlobalStyles />
             <main>
-                <h1>We're launching soon</h1>
+                <Heading>We're launching soon</Heading>
 
-                <div>
+                <CountdownContainer>
                     <Count value={days} label="Days" />
                     <Count value="23" label="Hours" />
                     <Count value="55" label="Minutes" />
                     <Count value="41" label="Seconds" />
-                </div>
+                </CountdownContainer>
             </main>
-            <footer>
+            <Footer>
                 <a href="https://www.facebook.com/">
                     <img src={facebook} alt="Facebook" />
                 </a>
@@ -52,7 +70,7 @@ export default function App() {
                     . Coded by{" "}
                     <a href="https://github.com/cagloria">C.A. Gloria</a>.
                 </p>
-            </footer>
+            </Footer>
         </>
     );
 }
