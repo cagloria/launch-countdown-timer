@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { primary } from "./Themes";
 import facebook from "../assets/icon-facebook.svg";
 import pinterest from "../assets/icon-pinterest.svg";
@@ -9,6 +9,14 @@ const Container = styled.footer`
     bottom: 7px;
     transform: translateX(50%);
     right: 50%;
+
+    @media only screen and (min-width: 769px) {
+        bottom: 2px;
+    }
+
+    @media only screen and (min-width: 2000px) {
+        bottom: 70px;
+    }
 `;
 
 const LinksContainer = styled.div`
@@ -20,8 +28,9 @@ const LinksContainer = styled.div`
 const Attribution = styled.p`
     color: ${primary.gray};
     text-align: center;
-    font-size: 0.5em;
+    font-size: clamp(0.5em, 1vw, 1em);
     letter-spacing: 0.15em;
+    max-width: 40ch;
 `;
 
 export default function Footer() {

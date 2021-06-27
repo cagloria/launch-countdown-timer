@@ -2,7 +2,7 @@
 
 ![Design preview for the Launch countdown timer coding challenge](./design/desktop-preview.jpg)
 
-A countdown timer challenge provided by [Frontend Mentor](https://www.frontendmentor.io).
+A countdown timer challenge provided by [Frontend Mentor](https://www.frontendmentor.io). Currently in development.
 
 ## Features
 

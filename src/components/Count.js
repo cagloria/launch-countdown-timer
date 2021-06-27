@@ -11,7 +11,7 @@ const CountStyles = createGlobalStyle`
 `;
 
 const Value = styled.div`
-    font-size: 2.1em;
+    font-size: clamp(2.1em, 6vw, 5.2em);
     padding: 11px 15px;
     display: flex;
     justify-content: center;
@@ -20,6 +20,10 @@ const Value = styled.div`
     position: relative;
     text-align: center;
     box-shadow: 0px 6px 4px ${neutral.black};
+
+    @media only screen and (min-width: 769px) {
+        padding: 16px 26px;
+    }
 `;
 
 const TopBox = styled.div`
@@ -44,10 +48,14 @@ const Shadow = styled.div`
 const Label = styled.p`
     text-transform: uppercase;
     color: ${primary.gray};
-    font-size: 0.46em;
+    font-size: clamp(0.46em, 1vw, 0.86em);
     letter-spacing: 0.3em;
     margin: 14px 0 0;
     text-align: center;
+
+    @media only screen and (min-width: 769px) {
+        margin-top: 23px;
+    }
 `;
 
 export default function Count({ value, label }) {

@@ -9,10 +9,23 @@ const CountdownContainer = styled.div`
     justify-content: space-between;
     max-width: 350px;
     margin: 0 auto;
+
+    @media only screen and (min-width: 769px) {
+        max-width: 692px;
+        width: 60%;
+    }
 `;
 
 const Heading = styled.h1`
     margin-bottom: 57px;
+
+    @media only screen and (min-width: 769px) {
+        margin-bottom: 102px;
+    }
+
+    @media only screen and (max-height: 450px) {
+        margin-bottom: 45px;
+    }
 `;
 
 export default function App() {
