@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { primary } from "./Themes";
 import facebook from "../assets/icon-facebook.svg";
 import pinterest from "../assets/icon-pinterest.svg";
 import instagram from "../assets/icon-instagram.svg";
@@ -17,6 +18,7 @@ const LinksContainer = styled.div`
 `;
 
 const Attribution = styled.p`
+    color: ${primary.gray};
     text-align: center;
     font-size: 0.5em;
     letter-spacing: 0.15em;

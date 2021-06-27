@@ -12,9 +12,7 @@ const CountStyles = createGlobalStyle`
 
 const Value = styled.div`
     font-size: 2.1em;
-    width: fit-content;
-    width: 69px;
-    height: 66px;
+    padding: 11px 15px;
     display: flex;
     justify-content: center;
     align-items: center;

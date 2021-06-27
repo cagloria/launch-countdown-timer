@@ -6,8 +6,9 @@ import Footer from "./Footer";
 
 const CountdownContainer = styled.div`
     display: flex;
-    justify-content: center;
-    column-gap: 17px;
+    justify-content: space-between;
+    max-width: 350px;
+    margin: 0 auto;
 `;
 
 const Heading = styled.h1`

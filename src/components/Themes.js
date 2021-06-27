@@ -22,16 +22,16 @@ export const GlobalStyles = createGlobalStyle`
 
     body {
         margin: 0;
-        padding: 130px 20px 0;
+        padding: 130px 6.2vw 0;
         background-color: ${neutral.black};
         background-image: 
             url(${bgHills}),
             url(${bgStars}),
             linear-gradient(180deg, ${neutral.black} 0%, ${neutral.dark} 100%);
         background-repeat: no-repeat, no-repeat, no-repeat;
-        background-position: bottom, center, center;
-        background-attachment: fixed, fixed, fixed;
-        background-size: contain, auto, auto;
+        background-position: 84% bottom,center,center;
+        background-attachment: fixed,fixed,fixed;
+        background-size: 275% 25%,auto,auto;
     }
 
     a {
