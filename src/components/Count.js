@@ -46,6 +46,8 @@ const Shadow = styled.div`
     z-index: 9;
 `;
 
+// TODO: Set card to flip on time change
+
 const Label = styled.p`
     text-transform: uppercase;
     color: ${primary.gray};

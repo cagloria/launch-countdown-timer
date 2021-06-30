@@ -45,8 +45,16 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     a {
-        color: ${primary.red};
-        text-decoration: none;
+        color: ${primary.gray};
+        transition: color 0.3s ease-out;
+
+        &:hover {
+            color: ${primary.red};
+        }
+
+        &:active {
+            color: ${neutral.white};
+        }
     }
 
     h1 {
