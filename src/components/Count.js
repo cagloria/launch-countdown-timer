@@ -13,6 +13,7 @@ const CountStyles = createGlobalStyle`
 const Value = styled.div`
     font-size: clamp(2.1em, 6vw, 5.2em);
     padding: 11px 15px;
+    /* FIXME: Time changes size of container */
     display: flex;
     justify-content: center;
     align-items: center;
