@@ -11,9 +11,9 @@ const CountStyles = createGlobalStyle`
 `;
 
 const Value = styled.div`
-    font-size: clamp(2.1em, 6vw, 5.2em);
-    padding: 11px 15px;
-    /* FIXME: Time changes size of container */
+    font-size: 2.1em;
+    padding: 11px 0;
+    width: 71px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,8 +22,20 @@ const Value = styled.div`
     text-align: center;
     box-shadow: 0px 6px 4px ${neutral.black};
 
+    @media only screen and (max-width: 320px) {
+        font-size: 1.7em;
+        width: 60px;
+    }
+
     @media only screen and (min-width: 769px) {
-        padding: 16px 26px;
+        padding: 16px 0;
+        font-size: 3.5em;
+        width: 103px;
+    }
+
+    @media only screen and (min-width: 1025px) {
+        font-size: 5.2em;
+        width: 150px;
     }
 `;
 
@@ -51,13 +63,14 @@ const Shadow = styled.div`
 const Label = styled.p`
     text-transform: uppercase;
     color: ${primary.gray};
-    font-size: clamp(0.46em, 1vw, 0.86em);
-    letter-spacing: 0.3em;
-    margin: 14px 0 0;
+    font-size: clamp(0.46em,1vw,0.76em);
+    letter-spacing: 0.4em;
+    margin: 13px 0 0;
     text-align: center;
 
     @media only screen and (min-width: 769px) {
-        margin-top: 23px;
+        letter-spacing: 0.6em;
+        margin-top: 26px;
     }
 `;
 

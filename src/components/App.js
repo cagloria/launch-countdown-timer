@@ -12,7 +12,7 @@ const CountdownContainer = styled.div`
     margin: 0 auto;
 
     @media only screen and (min-width: 769px) {
-        max-width: 692px;
+        max-width: 689px;
         width: 60%;
     }
 `;
