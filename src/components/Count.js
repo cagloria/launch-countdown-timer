@@ -8,6 +8,10 @@ const CountStyles = createGlobalStyle`
         height: 50%;
         border-radius: 5px;
     }
+
+    .plus {
+        font-size: 0.5em;
+    }
 `;
 
 const Value = styled.div`
@@ -63,7 +67,7 @@ const Shadow = styled.div`
 const Label = styled.p`
     text-transform: uppercase;
     color: ${primary.gray};
-    font-size: clamp(0.46em,1vw,0.76em);
+    font-size: clamp(0.46em, 1vw, 0.76em);
     letter-spacing: 0.4em;
     margin: 13px 0 0;
     text-align: center;
@@ -78,6 +82,16 @@ export default function Count({ value, label }) {
     if (`${value}`.length < 2) {
         value = `0${value}`;
     }
+
+    value =
+        `${value}`.length > 2 ? (
+            <>
+                99
+                <span className="plus">+</span>
+            </>
+        ) : (
+            value
+        );
 
     return (
         <div>
