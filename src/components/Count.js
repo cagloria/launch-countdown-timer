@@ -1,19 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { primary, neutral } from "./Themes";
 
-const CountStyles = createGlobalStyle`
-    .box {
-        position: absolute;
-        width: 100%;
-        height: 50%;
-        border-radius: 5px;
-    }
-
-    .plus {
-        font-size: 0.5em;
-    }
-`;
-
 const Value = styled.div`
     font-size: 2.1em;
     padding: 11px 0;
@@ -62,6 +49,38 @@ const Shadow = styled.div`
     z-index: 9;
 `;
 
+const CountStyles = createGlobalStyle`
+    .box {
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        border-radius: 5px;
+    }
+
+    /* When a value has three digits, the box's width is increased */
+    .three-digit {
+        width: 93px;
+
+        @media only screen and (max-width: 320px) {
+            width: 75px;
+        }
+
+        @media screen and (min-width: 769px) {
+            width: 150px;
+        }
+
+        @media only screen and (min-width: 1025px) {
+            width: 205px;
+        }
+    }
+
+    /* When a value has four digits, the value changes to "999+", and a small
+       is added */
+    .plus {
+        font-size: 0.5em;
+    }
+`;
+
 // TODO: Set card to flip on time change
 
 const Label = styled.p`
@@ -83,11 +102,14 @@ export default function Count({ value, label }) {
         value = `0${value}`;
     }
 
+    // Increases width of container for three-digit values
+    let valueClass = `${value}`.length > 2 ? "three-digit" : "";
+
+    // Accommodates values over 999 to show as "999+"
     value =
-        `${value}`.length > 2 ? (
+        `${value}`.length > 3 ? (
             <>
-                99
-                <span className="plus">+</span>
+                999<span className="plus">+</span>
             </>
         ) : (
             value
@@ -96,7 +118,7 @@ export default function Count({ value, label }) {
     return (
         <div>
             <CountStyles />
-            <Value>
+            <Value className={valueClass}>
                 {value}
                 <TopBox className="box" />
                 <BottomBox className="box" />

@@ -7,12 +7,12 @@ import Footer from "./Footer";
 
 const CountdownContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     max-width: 350px;
     margin: 0 auto;
 
     @media only screen and (min-width: 769px) {
-        max-width: 689px;
+        max-width: 723px;
         width: 60%;
     }
 `;
@@ -63,10 +63,18 @@ export default function App() {
                 <Heading>We're launching soon</Heading>
 
                 <CountdownContainer>
-                    <Count value={days} label="Days" />
-                    <Count value={hours} label="Hours" />
-                    <Count value={minutes} label="Minutes" />
-                    <Count value={seconds} label="Seconds" />
+                    {days >= 100 ? (
+                        <>
+                            <Count value={days} label="Days" />
+                        </>
+                    ) : (
+                        <>
+                            <Count value={days} label="Days" />
+                            <Count value={hours} label="Hours" />
+                            <Count value={minutes} label="Minutes" />
+                            <Count value={seconds} label="Seconds" />
+                        </>
+                    )}
                 </CountdownContainer>
             </main>
             <Footer />
