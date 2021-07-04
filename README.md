@@ -2,6 +2,10 @@
 
 ![Design preview for the Launch countdown timer coding challenge](./design/desktop-preview.jpg)
 
+<p align="center">
+    <img alt="Build status" src="https://img.shields.io/github/workflow/status/cagloria/launch-countdown-timer/Test?style=for-the-badge" />
+</p>
+
 A countdown timer challenge provided by [Frontend Mentor](https://www.frontendmentor.io). Currently in development.
 
 ## Features

@@ -65,11 +65,19 @@ export default function App() {
                 <CountdownContainer>
                     {days >= 100 ? (
                         <>
-                            <Count value={days} label="Days" />
+                            <Count
+                                value={days}
+                                label="Days"
+                                largeValue={days >= 100}
+                            />
                         </>
                     ) : (
                         <>
-                            <Count value={days} label="Days" />
+                            <Count
+                                value={days}
+                                label="Days"
+                                largeValue={days >= 100}
+                            />
                             <Count value={hours} label="Hours" />
                             <Count value={minutes} label="Minutes" />
                             <Count value={seconds} label="Seconds" />
