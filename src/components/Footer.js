@@ -37,6 +37,7 @@ export default function Footer() {
     return (
         <Container>
             <LinksContainer>
+            {/* TODO: Add hover/active icon link state */}
                 <a href="https://www.facebook.com/">
                     <img src={facebook} alt="Facebook" />
                 </a>

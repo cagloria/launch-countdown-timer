@@ -1,18 +1,10 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { primary, neutral } from "./Themes";
 
-const CountStyles = createGlobalStyle`
-    .box {
-        position: absolute;
-        width: 100%;
-        height: 50%;
-        border-radius: 5px;
-    }
-`;
-
 const Value = styled.div`
-    font-size: clamp(2.1em, 6vw, 5.2em);
-    padding: 11px 15px;
+    font-size: 2.1em;
+    padding: 11px 0;
+    width: 71px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,8 +13,20 @@ const Value = styled.div`
     text-align: center;
     box-shadow: 0px 6px 4px ${neutral.black};
 
+    @media only screen and (max-width: 320px) {
+        font-size: 1.7em;
+        width: 60px;
+    }
+
     @media only screen and (min-width: 769px) {
-        padding: 16px 26px;
+        padding: 16px 0;
+        font-size: 3.5em;
+        width: 103px;
+    }
+
+    @media only screen and (min-width: 1025px) {
+        font-size: 5.2em;
+        width: 150px;
     }
 `;
 
@@ -45,16 +49,51 @@ const Shadow = styled.div`
     z-index: 9;
 `;
 
+const CountStyles = createGlobalStyle`
+    .box {
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        border-radius: 5px;
+    }
+
+    /* When a value has three digits, the box's width is increased */
+    .three-digit {
+        width: 93px;
+
+        @media only screen and (max-width: 320px) {
+            width: 75px;
+        }
+
+        @media screen and (min-width: 769px) {
+            width: 150px;
+        }
+
+        @media only screen and (min-width: 1025px) {
+            width: 205px;
+        }
+    }
+
+    /* When a value has four digits, the value changes to "999+", and a small
+       is added */
+    .plus {
+        font-size: 0.5em;
+    }
+`;
+
+// TODO: Set card to flip on time change
+
 const Label = styled.p`
     text-transform: uppercase;
     color: ${primary.gray};
-    font-size: clamp(0.46em, 1vw, 0.86em);
-    letter-spacing: 0.3em;
-    margin: 14px 0 0;
+    font-size: clamp(0.46em, 1vw, 0.76em);
+    letter-spacing: 0.4em;
+    margin: 13px 0 0;
     text-align: center;
 
     @media only screen and (min-width: 769px) {
-        margin-top: 23px;
+        letter-spacing: 0.6em;
+        margin-top: 26px;
     }
 `;
 
@@ -63,10 +102,23 @@ export default function Count({ value, label }) {
         value = `0${value}`;
     }
 
+    // Increases width of container for three-digit values
+    let valueClass = `${value}`.length > 2 ? "three-digit" : "";
+
+    // Accommodates values over 999 to show as "999+"
+    value =
+        `${value}`.length > 3 ? (
+            <>
+                999<span className="plus">+</span>
+            </>
+        ) : (
+            value
+        );
+
     return (
         <div>
             <CountStyles />
-            <Value>
+            <Value className={valueClass}>
                 {value}
                 <TopBox className="box" />
                 <BottomBox className="box" />
