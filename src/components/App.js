@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { findTimeDifference } from "../utilities/time";
+import { randomInteger } from "../utilities/math";
 import { GlobalStyles, primary } from "./Themes";
 import Count from "./Count";
 import Footer from "./Footer";
@@ -38,7 +39,25 @@ const ArrivingMessage = styled.p`
 `;
 
 const LAUNCH = (() => {
-    const launchDate = new Date("August 21, 2021 00:00:00");
+    let launchDate = new Date();
+
+    // Generates a random launch day up to 99 days away, for demonstration 
+    // purposes
+    function _randomizeLaunchDate() {
+        let day = randomInteger(1, 99);
+
+        launchDate = new Date(
+            launchDate.getFullYear(),
+            launchDate.getMonth(),
+            launchDate.getDate() + day,
+            randomInteger(0, 23),
+            randomInteger(0, 59),
+            randomInteger(0, 59)
+        );
+    }
+
+    _randomizeLaunchDate();
+
     return { launchDate };
 })();
 
