@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.js": "/launch-countdown-timer/static/js/main.2fb4846d.chunk.js",
+    "main.js.map": "/launch-countdown-timer/static/js/main.2fb4846d.chunk.js.map",
+    "runtime-main.js": "/launch-countdown-timer/static/js/runtime-main.ee883af9.js",
+    "runtime-main.js.map": "/launch-countdown-timer/static/js/runtime-main.ee883af9.js.map",
+    "static/js/2.e1e85155.chunk.js": "/launch-countdown-timer/static/js/2.e1e85155.chunk.js",
+    "static/js/2.e1e85155.chunk.js.map": "/launch-countdown-timer/static/js/2.e1e85155.chunk.js.map",
+    "index.html": "/launch-countdown-timer/index.html",
+    "static/js/2.e1e85155.chunk.js.LICENSE.txt": "/launch-countdown-timer/static/js/2.e1e85155.chunk.js.LICENSE.txt",
+    "static/media/bg-stars.166881a1.svg": "/launch-countdown-timer/static/media/bg-stars.166881a1.svg",
+    "static/media/icon-facebook-active.d32e6bbc.svg": "/launch-countdown-timer/static/media/icon-facebook-active.d32e6bbc.svg",
+    "static/media/icon-facebook-hover.4ab3b75e.svg": "/launch-countdown-timer/static/media/icon-facebook-hover.4ab3b75e.svg",
+    "static/media/icon-facebook.a9208377.svg": "/launch-countdown-timer/static/media/icon-facebook.a9208377.svg",
+    "static/media/icon-instagram-active.af308b17.svg": "/launch-countdown-timer/static/media/icon-instagram-active.af308b17.svg",
+    "static/media/icon-instagram-hover.5fe2fbe8.svg": "/launch-countdown-timer/static/media/icon-instagram-hover.5fe2fbe8.svg",
+    "static/media/icon-instagram.b94ff26a.svg": "/launch-countdown-timer/static/media/icon-instagram.b94ff26a.svg",
+    "static/media/icon-pinterest-active.4c3c41a7.svg": "/launch-countdown-timer/static/media/icon-pinterest-active.4c3c41a7.svg",
+    "static/media/icon-pinterest-hover.827ce379.svg": "/launch-countdown-timer/static/media/icon-pinterest-hover.827ce379.svg",
+    "static/media/icon-pinterest.ea0db8e7.svg": "/launch-countdown-timer/static/media/icon-pinterest.ea0db8e7.svg",
+    "static/media/pattern-hills.815d688f.svg": "/launch-countdown-timer/static/media/pattern-hills.815d688f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ee883af9.js",
+    "static/js/2.e1e85155.chunk.js",
+    "static/js/main.2fb4846d.chunk.js"
+  ]
+}
