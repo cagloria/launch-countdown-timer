@@ -57,8 +57,8 @@ const CountStyles = createGlobalStyle`
         border-radius: 5px;
     }
 
-    /* When a value has three digits, the box's width is increased */
-    .three-digit {
+    /* When a value has three or more digits, the box's width is increased */
+    .large-value {
         width: 93px;
 
         @media only screen and (max-width: 320px) {
@@ -74,8 +74,7 @@ const CountStyles = createGlobalStyle`
         }
     }
 
-    /* When a value has four digits, the value changes to "999+", and a small
-       is added */
+    /* When a value has four or more digits, the value changes to "999+" */
     .plus {
         font-size: 0.5em;
     }
@@ -97,28 +96,38 @@ const Label = styled.p`
     }
 `;
 
-export default function Count({ value, label }) {
-    if (`${value}`.length < 2) {
+/**
+ * Formats a value to fit in the Count component.
+ * @param {Number} value    Value to convert
+ * @returns                 A React fragment of the formatted value
+ */
+export function formatValue(value) {
+    value = `${value}`;
+
+    // Changes single-digit values to two-digit
+    if (value.length < 2) {
         value = `0${value}`;
     }
 
-    // Increases width of container for three-digit values
-    let valueClass = `${value}`.length > 2 ? "three-digit" : "";
-
     // Accommodates values over 999 to show as "999+"
-    value =
-        `${value}`.length > 3 ? (
+    if (value.length > 3) {
+        return (
             <>
                 999<span className="plus">+</span>
             </>
-        ) : (
-            value
         );
+    }
+
+    return <>{value}</>;
+}
+
+export default function Count({ value, label, largeValue }) {
+    value = formatValue(value);
 
     return (
         <div>
             <CountStyles />
-            <Value className={valueClass}>
+            <Value className={largeValue ? "large-value" : null}>
                 {value}
                 <TopBox className="box" />
                 <BottomBox className="box" />

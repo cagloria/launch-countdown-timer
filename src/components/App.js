@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { findTimeDifference } from "../utilities/time";
-import { GlobalStyles } from "./Themes";
+import { GlobalStyles, primary } from "./Themes";
 import Count from "./Count";
 import Footer from "./Footer";
 
@@ -29,6 +29,14 @@ const Heading = styled.h1`
     }
 `;
 
+const ArrivingMessage = styled.p`
+    color: ${primary.red};
+    font-size: clamp(1.5em, 2.5vw, 2em);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+`;
+
 const LAUNCH = (() => {
     const launchDate = new Date("August 21, 2021 00:00:00");
     return { launchDate };
@@ -40,6 +48,7 @@ export default function App() {
     const [hours, setHours] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
+    const [launched, setLaunched] = useState(false);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -48,6 +57,11 @@ export default function App() {
                 new Date(),
                 LAUNCH.launchDate
             );
+
+            if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+                setLaunched(true);
+            }
+
             setDays(days);
             setHours(hours);
             setMinutes(minutes);
@@ -63,13 +77,23 @@ export default function App() {
                 <Heading>We're launching soon</Heading>
 
                 <CountdownContainer>
-                    {days >= 100 ? (
+                    {launched ? (
+                        <ArrivingMessage>Arriving now</ArrivingMessage>
+                    ) : days >= 100 ? (
                         <>
-                            <Count value={days} label="Days" />
+                            <Count
+                                value={days}
+                                label="Days"
+                                largeValue={days >= 100}
+                            />
                         </>
                     ) : (
                         <>
-                            <Count value={days} label="Days" />
+                            <Count
+                                value={days}
+                                label="Days"
+                                largeValue={days >= 100}
+                            />
                             <Count value={hours} label="Hours" />
                             <Count value={minutes} label="Minutes" />
                             <Count value={seconds} label="Seconds" />
