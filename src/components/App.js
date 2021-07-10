@@ -62,32 +62,42 @@ const LAUNCH = (() => {
 })();
 
 export default function App() {
-    const [currentDate, setCurrentDate] = useState(new Date());
     const [daysRemaining, setDaysRemaining] = useState(0);
     const [hoursRemaining, setHoursRemaining] = useState(0);
     const [minutesRemaining, setMinutesRemaining] = useState(0);
     const [secondsRemaining, setSecondsRemaining] = useState(0);
     const [launched, setLaunched] = useState(false);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentDate(new Date());
-            const { days, hours, minutes, seconds } = findTimeDifference(
-                new Date(),
-                LAUNCH.launchDate
-            );
+    function setRemainingTime() {
+        const { days, hours, minutes, seconds } = findTimeDifference(
+            new Date(),
+            LAUNCH.launchDate
+        );
 
-            if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
-                setLaunched(true);
-            }
-
+        if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+            setLaunched(true);
+        } else {
             setDaysRemaining(days);
             setHoursRemaining(hours);
             setMinutesRemaining(minutes);
             setSecondsRemaining(seconds);
-        }, 1000);
-        return () => clearInterval(interval);
-    }, [currentDate]);
+        }
+    }
+
+    useEffect(() => {
+        if (!launched) {
+            setRemainingTime();
+        }
+    }, [launched]);
+
+    useEffect(() => {
+        if (!launched) {
+            const interval = setInterval(() => {
+                setRemainingTime();
+            }, 1000);
+            return () => clearInterval(interval);
+        }
+    });
 
     return (
         <>

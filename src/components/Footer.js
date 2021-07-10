@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import { primary } from "./Themes";
 import facebook from "../assets/icon-facebook.svg";
