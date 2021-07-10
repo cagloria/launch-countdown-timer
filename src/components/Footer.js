@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import { primary } from "./Themes";
 import facebook from "../assets/icon-facebook.svg";
@@ -42,43 +43,15 @@ const Attribution = styled.p`
 const IconLink = styled.a`
     width: 24px;
     height: 24px;
-
-    span {
-        display: block;
-        width: 100%;
-        height: 100%;
-        background-position: center;
-        transition: background-image 0.3s ease-out;
+    display: block;
+    background-position: center;
+    transition: background-image 0.3s ease-out;
+    background-image: url(${(props) => props.bg});
+    &:hover {
+        background-image: url(${(props) => props.bgHover});
     }
-
-    .facebook {
-        background-image: url(${facebook});
-        &:hover {
-            background-image: url(${facebookHover});
-        }
-        &:active {
-            background-image: url(${facebookActive});
-        }
-    }
-
-    .pinterest {
-        background-image: url(${pinterest});
-        &:hover {
-            background-image: url(${pinterestHover});
-        }
-        &:active {
-            background-image: url(${pinterestActive});
-        }
-    }
-
-    .instagram {
-        background-image: url(${instagram});
-        &:hover {
-            background-image: url(${instagramHover});
-        }
-        &:active {
-            background-image: url(${instagramActive});
-        }
+    &:active {
+        background-image: url(${(props) => props.bgActive});
     }
 `;
 
@@ -86,15 +59,27 @@ export default function Footer() {
     return (
         <Container>
             <LinksContainer>
-                <IconLink href="https://www.facebook.com/">
-                    <span aria-label="Facebook" className="facebook"></span>
-                </IconLink>
-                <IconLink href="https://www.pinterest.com/">
-                    <span aria-label="Pinterest" className="pinterest"></span>
-                </IconLink>
-                <IconLink href="https://www.instagram.com/">
-                    <span aria-label="Instagram" className="instagram"></span>
-                </IconLink>
+                <IconLink
+                    href="https://www.facebook.com/"
+                    aria-label="Facebook"
+                    bg={facebook}
+                    bgHover={facebookHover}
+                    bgActive={facebookActive}
+                ></IconLink>
+                <IconLink
+                    href="https://www.pinterest.com/"
+                    aria-label="Pinterest"
+                    bg={pinterest}
+                    bgHover={pinterestHover}
+                    bgActive={pinterestActive}
+                ></IconLink>
+                <IconLink
+                    href="https://www.instagram.com/"
+                    aria-label="Instagram"
+                    bg={instagram}
+                    bgHover={instagramHover}
+                    bgActive={instagramActive}
+                ></IconLink>
             </LinksContainer>
             <Attribution>
                 Challenge by{" "}

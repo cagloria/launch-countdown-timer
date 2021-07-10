@@ -41,7 +41,7 @@ const ArrivingMessage = styled.p`
 const LAUNCH = (() => {
     let launchDate = new Date();
 
-    // Generates a random launch day up to 99 days away, for demonstration 
+    // Generates a random launch day up to 99 days away, for demonstration
     // purposes
     function _randomizeLaunchDate() {
         let day = randomInteger(1, 99);
@@ -62,32 +62,42 @@ const LAUNCH = (() => {
 })();
 
 export default function App() {
-    const [currentDate, setCurrentDate] = useState(new Date());
-    const [days, setDays] = useState(0);
-    const [hours, setHours] = useState(0);
-    const [minutes, setMinutes] = useState(0);
-    const [seconds, setSeconds] = useState(0);
+    const [daysRemaining, setDaysRemaining] = useState(0);
+    const [hoursRemaining, setHoursRemaining] = useState(0);
+    const [minutesRemaining, setMinutesRemaining] = useState(0);
+    const [secondsRemaining, setSecondsRemaining] = useState(0);
     const [launched, setLaunched] = useState(false);
 
+    function setRemainingTime() {
+        const { days, hours, minutes, seconds } = findTimeDifference(
+            new Date(),
+            LAUNCH.launchDate
+        );
+
+        if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+            setLaunched(true);
+        } else {
+            setDaysRemaining(days);
+            setHoursRemaining(hours);
+            setMinutesRemaining(minutes);
+            setSecondsRemaining(seconds);
+        }
+    }
+
     useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentDate(new Date());
-            const { days, hours, minutes, seconds } = findTimeDifference(
-                new Date(),
-                LAUNCH.launchDate
-            );
+        if (!launched) {
+            setRemainingTime();
+        }
+    }, [launched]);
 
-            if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
-                setLaunched(true);
-            }
-
-            setDays(days);
-            setHours(hours);
-            setMinutes(minutes);
-            setSeconds(seconds);
-        }, 1000);
-        return () => clearInterval(interval);
-    }, [currentDate]);
+    useEffect(() => {
+        if (!launched) {
+            const interval = setInterval(() => {
+                setRemainingTime();
+            }, 1000);
+            return () => clearInterval(interval);
+        }
+    });
 
     return (
         <>
@@ -98,24 +108,24 @@ export default function App() {
                 <CountdownContainer>
                     {launched ? (
                         <ArrivingMessage>Arriving now</ArrivingMessage>
-                    ) : days >= 100 ? (
+                    ) : daysRemaining >= 100 ? (
                         <>
                             <Count
-                                value={days}
+                                value={daysRemaining}
                                 label="Days"
-                                largeValue={days >= 100}
+                                largeValue={daysRemaining >= 100}
                             />
                         </>
                     ) : (
                         <>
                             <Count
-                                value={days}
+                                value={daysRemaining}
                                 label="Days"
-                                largeValue={days >= 100}
+                                largeValue={daysRemaining >= 100}
                             />
-                            <Count value={hours} label="Hours" />
-                            <Count value={minutes} label="Minutes" />
-                            <Count value={seconds} label="Seconds" />
+                            <Count value={hoursRemaining} label="Hours" />
+                            <Count value={minutesRemaining} label="Minutes" />
+                            <Count value={secondsRemaining} label="Seconds" />
                         </>
                     )}
                 </CountdownContainer>

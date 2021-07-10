@@ -1,3 +1,4 @@
+import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { primary, neutral } from "./Themes";
 
@@ -79,8 +80,6 @@ const CountStyles = createGlobalStyle`
         font-size: 0.5em;
     }
 `;
-
-// TODO: Set card to flip on time change
 
 const Label = styled.p`
     text-transform: uppercase;
