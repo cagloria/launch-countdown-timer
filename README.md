@@ -3,10 +3,15 @@
 ![Design preview for the Launch countdown timer coding challenge](./design/desktop-preview.jpg)
 
 <p align="center">
+    <img alt="Build status badge" src="https://img.shields.io/github/workflow/status/cagloria/launch-countdown-timer/Test" />
+    <img alt="Repo size badge" src="https://img.shields.io/github/repo-size/cagloria/launch-countdown-timer" />
+    <img alt="Last commit badge" src="https://img.shields.io/github/last-commit/cagloria/launch-countdown-timer" />
+</p>
+
+<p align="center">
     <a href="https://cagloria.github.io/launch-countdown-timer/">
-        <img alt="Deployment" src="https://shields.io/badge/Deployment-2FB2D0?&style=for-the-badge" />
+        <img alt="Deployment" src="https://shields.io/badge/Deployment-2FB2D0" />
     </a>
-    <img alt="Build status" src="https://img.shields.io/github/workflow/status/cagloria/launch-countdown-timer/Test?style=for-the-badge" />
 </p>
 
 A countdown timer challenge provided by [Frontend Mentor](https://www.frontendmentor.io).
