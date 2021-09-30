@@ -56,13 +56,18 @@ function getRandomDate() {
     );
 }
 
+const STORAGE = (() => {
+    const launchDate = "launchDate";
+    return { launchDate };
+})();
+
 export default function App() {
     const [daysRemaining, setDaysRemaining] = useState(0);
     const [hoursRemaining, setHoursRemaining] = useState(0);
     const [minutesRemaining, setMinutesRemaining] = useState(0);
     const [secondsRemaining, setSecondsRemaining] = useState(0);
     const [launched, setLaunched] = useState(false);
-    const [launchDate] = useState(
+    const [launchDate, setLaunchDate] = useState(
         getLaunchDateFromStorage()
             ? getLaunchDateFromStorage()
             : randomizeLaunchDate()
@@ -83,13 +88,22 @@ export default function App() {
         }
     });
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => {
+        const storedDate = localStorage.getItem(STORAGE.launchDate);
+
+        if (storedDate !== launchDate) {
+            setLaunchDate(storedDate);
+        }
+    });
+
     /**
      * Randomizes a launch date and sets it in local storage
      * @returns Randomized launch date
      */
     function randomizeLaunchDate() {
         let newDate = getRandomDate();
-        localStorage.setItem("launchDate", newDate);
+        localStorage.setItem(STORAGE.launchDate, newDate);
         return newDate;
     }
 
@@ -98,7 +112,7 @@ export default function App() {
      * @returns Launch date from local storage
      */
     function getLaunchDateFromStorage() {
-        return localStorage.getItem("launchDate");
+        return localStorage.getItem(STORAGE.launchDate);
     }
 
     /**
