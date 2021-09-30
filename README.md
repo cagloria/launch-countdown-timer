@@ -14,11 +14,12 @@
     </a>
 </p>
 
-A countdown timer challenge provided by [Frontend Mentor](https://www.frontendmentor.io).
+A [countdown timer challenge](https://www.frontendmentor.io/challenges/launch-countdown-timer-N0XkGfyz-) provided by [Frontend Mentor](https://www.frontendmentor.io). The timer counts down to a random launch date stored in the browser's local storage, and updates every second.
 
 ## Features
 
 -   A countdown timer
+-   Launch date stored in local storage
 -   Responsive design
 
 ## Technologies Used
