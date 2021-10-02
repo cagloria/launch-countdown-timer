@@ -73,12 +73,14 @@ export default function App() {
             : randomizeLaunchDate()
     );
 
+    // Ensures quicker updating when opening app
     useEffect(() => {
         if (!launched) {
             updateRemainingTime();
         }
     });
 
+    // If the app has not launched, update the timer every second
     useEffect(() => {
         if (!launched) {
             const interval = setInterval(() => {
@@ -88,6 +90,8 @@ export default function App() {
         }
     });
 
+    // Check if launch date in local storage matches launch date in state. If
+    // not, set state to the value in local storage.
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         const storedDate = localStorage.getItem(STORAGE.launchDate);
