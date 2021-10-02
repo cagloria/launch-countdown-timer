@@ -29,10 +29,13 @@ export function findTimeDifference(start, end) {
     difference -= days * secondsInDay;
     hours = Math.floor(difference / secondsInHour);
 
-    // Continue pattern
+    // Subtract duration of hours from difference and continue to find total
+    // minutes in the remaining difference
     difference -= hours * secondsInHour;
     minutes = Math.floor(difference / secondsInMinute);
 
+    // Subtract duration of minutes from difference and continue to find total
+    // seconds in the remaining difference
     difference -= minutes * secondsInMinute;
     seconds = Math.floor(difference);
 

@@ -3,17 +3,23 @@
 ![Design preview for the Launch countdown timer coding challenge](./design/desktop-preview.jpg)
 
 <p align="center">
-    <a href="https://cagloria.github.io/launch-countdown-timer/">
-        <img alt="Deployment" src="https://shields.io/badge/Deployment-2FB2D0?&style=for-the-badge" />
-    </a>
-    <img alt="Build status" src="https://img.shields.io/github/workflow/status/cagloria/launch-countdown-timer/Test?style=for-the-badge" />
+    <img alt="Build status badge" src="https://img.shields.io/github/workflow/status/cagloria/launch-countdown-timer/Test" />
+    <img alt="Repo size badge" src="https://img.shields.io/github/repo-size/cagloria/launch-countdown-timer" />
+    <img alt="Last commit badge" src="https://img.shields.io/github/last-commit/cagloria/launch-countdown-timer" />
 </p>
 
-A countdown timer challenge provided by [Frontend Mentor](https://www.frontendmentor.io).
+<p align="center">
+    <a href="https://cagloria.github.io/launch-countdown-timer/">
+        <img alt="Deployment" src="https://shields.io/badge/Deployment-2FB2D0" />
+    </a>
+</p>
+
+A [countdown timer challenge](https://www.frontendmentor.io/challenges/launch-countdown-timer-N0XkGfyz-) provided by [Frontend Mentor](https://www.frontendmentor.io). The timer counts down to a random launch date stored in the browser's local storage, and updates every second.
 
 ## Features
 
 -   A countdown timer
+-   Launch date stored in local storage
 -   Responsive design
 
 ## Technologies Used

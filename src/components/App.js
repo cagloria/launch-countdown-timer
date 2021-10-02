@@ -38,26 +38,26 @@ const ArrivingMessage = styled.p`
     text-align: center;
 `;
 
-const LAUNCH = (() => {
-    let launchDate = new Date();
+/**
+ * Creates a random date within 1 to 99 days away from current date.
+ * @returns A randomized date
+ */
+function getRandomDate() {
+    let date = new Date();
+    let day = randomInteger(1, 99);
 
-    // Generates a random launch day up to 99 days away, for demonstration
-    // purposes
-    function _randomizeLaunchDate() {
-        let day = randomInteger(1, 99);
+    return new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate() + day,
+        randomInteger(0, 23),
+        randomInteger(0, 59),
+        randomInteger(0, 59)
+    );
+}
 
-        launchDate = new Date(
-            launchDate.getFullYear(),
-            launchDate.getMonth(),
-            launchDate.getDate() + day,
-            randomInteger(0, 23),
-            randomInteger(0, 59),
-            randomInteger(0, 59)
-        );
-    }
-
-    _randomizeLaunchDate();
-
+const STORAGE = (() => {
+    const launchDate = "launchDate";
     return { launchDate };
 })();
 
@@ -67,11 +67,67 @@ export default function App() {
     const [minutesRemaining, setMinutesRemaining] = useState(0);
     const [secondsRemaining, setSecondsRemaining] = useState(0);
     const [launched, setLaunched] = useState(false);
+    const [launchDate, setLaunchDate] = useState(
+        getLaunchDateFromStorage()
+            ? getLaunchDateFromStorage()
+            : randomizeLaunchDate()
+    );
 
-    function setRemainingTime() {
+    // Ensures quicker updating when opening app
+    useEffect(() => {
+        if (!launched) {
+            updateRemainingTime();
+        }
+    });
+
+    // If the app has not launched, update the timer every second
+    useEffect(() => {
+        if (!launched) {
+            const interval = setInterval(() => {
+                updateRemainingTime();
+            }, 1000);
+            return () => clearInterval(interval);
+        }
+    });
+
+    // Check if launch date in local storage matches launch date in state. If
+    // not, set state to the value in local storage.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => {
+        const storedDate = localStorage.getItem(STORAGE.launchDate);
+
+        if (storedDate !== launchDate) {
+            setLaunchDate(storedDate);
+        }
+    });
+
+    /**
+     * Randomizes a launch date and sets it in local storage
+     * @returns Randomized launch date
+     */
+    function randomizeLaunchDate() {
+        let newDate = getRandomDate();
+        localStorage.setItem(STORAGE.launchDate, newDate);
+        return newDate;
+    }
+
+    /**
+     * Retrieves launch date from local storage
+     * @returns Launch date from local storage
+     */
+    function getLaunchDateFromStorage() {
+        return localStorage.getItem(STORAGE.launchDate);
+    }
+
+    /**
+     * Checks to see if the remaining time is above zero. If so, sets app to
+     * launched state, or else, sets state for remaining days, hours, minutes,
+     * and seconds.
+     */
+    function updateRemainingTime() {
         const { days, hours, minutes, seconds } = findTimeDifference(
             new Date(),
-            LAUNCH.launchDate
+            new Date(launchDate)
         );
 
         if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
@@ -83,21 +139,6 @@ export default function App() {
             setSecondsRemaining(seconds);
         }
     }
-
-    useEffect(() => {
-        if (!launched) {
-            setRemainingTime();
-        }
-    }, [launched]);
-
-    useEffect(() => {
-        if (!launched) {
-            const interval = setInterval(() => {
-                setRemainingTime();
-            }, 1000);
-            return () => clearInterval(interval);
-        }
-    });
 
     return (
         <>
