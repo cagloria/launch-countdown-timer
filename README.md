@@ -5,22 +5,21 @@
 <p align="center">
     <img alt="Build status badge" src="https://img.shields.io/github/workflow/status/cagloria/launch-countdown-timer/Test" />
     <img alt="Repo size badge" src="https://img.shields.io/github/repo-size/cagloria/launch-countdown-timer" />
-    <img alt="Last commit badge" src="https://img.shields.io/github/last-commit/cagloria/launch-countdown-timer" />
-</p>
-
-<p align="center">
-    <a href="https://cagloria.github.io/launch-countdown-timer/">
-        <img alt="Deployment" src="https://shields.io/badge/Deployment-2FB2D0" />
-    </a>
 </p>
 
 A [countdown timer challenge](https://www.frontendmentor.io/challenges/launch-countdown-timer-N0XkGfyz-) provided by [Frontend Mentor](https://www.frontendmentor.io). The timer counts down to a random launch date stored in the browser's local storage, and updates every second.
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Features
 
 -   A countdown timer
 -   Launch date stored in local storage
 -   Responsive design
+
+## Demo
+
+This project has been deployed to GitHub Pages: https://cagloria.github.io/launch-countdown-timer/
 
 ## Technologies Used
 
